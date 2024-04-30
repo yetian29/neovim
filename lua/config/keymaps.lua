@@ -6,9 +6,13 @@ keymap.set("i", "<C-i>", "<ESC>", { desc = "Exit insert mode with jk" })
 
 keymap.set("n", "<C-M>", ":m .+1<CR>", { desc = "Move the code down" })
 
-keymap.set("n", "<leader>cm", ":!", { desc = "Call terminal command" })
-
 keymap.set("n", "<C-U>", ":m .-2<CR>", { desc = "Move the code up" })
+
+keymap.set("v", "<C-M>", ":m '>+1<CR>gv=gv", { desc = "Move the block of code down" })
+
+keymap.set("v", "<C-U>", ":m '<-2<CR>gv=gv", { desc = "Move the block of code up" })
+
+keymap.set("n", "<leader>cm", ":!", { desc = "Call terminal command" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
