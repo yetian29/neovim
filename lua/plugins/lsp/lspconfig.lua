@@ -64,10 +64,6 @@ return {
 
         opts.desc = "Restart LSP"
         keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-
-        -- Thiết lập phím tắt cho việc hiển thị gợi ý import
-        opts.desc = "Import Actions"
-        keymap.set("n", "<C-p>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
       end,
     })
 
@@ -89,6 +85,21 @@ return {
           capabilities = capabilities,
         })
       end,
+      ["pyright"] = function()
+        lspconfig["pyright"].setup({
+          capabilities = capabilities,
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "openFilesOnly",
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        })
+      end,
+
       ["lua_ls"] = function()
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
